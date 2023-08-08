@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include SessionsHelper
   before_action :logged_in_user, only: [:show]
 
   def show
@@ -10,18 +11,19 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
-      flash[:success] = "Welcome to Maynard Bingo!"
-      redirect to @user
+    user = User.new(
+      username: params[:user][:username],
+      password: params[:user][:password],
+      password_confirmation: params[:user][:password_confirmation]
+    )
+    if user.valid?
+      log_in(user.id)
+      flash[:success] = "Successfully Created User!"
+      user.save
+      redirect_to user
     else
-      render 'new'
+      flash[:warning] = "Error creating profile, try a valid username or password"
+      redirect_to signup_path
     end
-  end
-
-  private
-
-  def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end

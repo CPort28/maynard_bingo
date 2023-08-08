@@ -1,14 +1,38 @@
-<nav class="navbar mb-2">
-  <div class="container-fluid">
-    <% if logged_in? %>
-      <ul class="nav navbar-right ">
-        <li><%= link_to "Log out", logout_path, class: "mx-2", method: :delete %></li> 
-      </ul>
-    <% else %>
-      <ul class="nav navbar-right ">
-        <li><%= link_to "Log in", login_path, class: "mx-2" %></li> 
-        <li><%= link_to "Sign up", signup_path, class: "mx-2" %></li>
-      </ul>
-    <% end %>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="/">Maynard Bingo</a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav navbar-left">
+      <li class="nav-item">
+        <button class='nav-button'>
+          <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+        </button>
+      </li>
+      <% if logged_in? %>
+        <button class='nav-button'>
+          <li class="nav-item"><%= link_to "Current Board", "#", class: "nav-link" %></li>
+        </button>
+        <button class='nav-button'>
+          <li class="nav-item"><%= link_to "Archives", "#", class: "nav-link" %></li>
+        </button>
+      <% end %>
+      <button class='nav-button'>
+        <li class="nav-item"><%= link_to "About", "#", class: "nav-link" %></li>
+      </button>
+    </ul>
+    <ul class="navbar-nav navbar-right">
+      <% if logged_in? %>
+        <button class='nav-button'>
+          <li class="nav-item"><%= link_to "Log out", logout_path, class: "nav-link", method: :delete %></li> 
+        </button>
+      <% else %>
+        <button class='nav-button'>
+          <li class="nav-item"><%= link_to "Log in", login_path, class: "nav-link" %></li> 
+        </button>
+        <button class='nav-button'>
+          <li class="nav-item"><%= link_to "Sign up", signup_path, class: "nav-link" %></li>
+        </button>
+      <% end %>
+    </ul>
   </div>
 </nav>

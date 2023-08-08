@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root 'main#home'
 
   # Users routes
-  resources :user, only: [:new, :create, :edit, :update, :show, :destroy]
+  resources :users, only: [:new, :create, :edit, :update, :show, :destroy]
   get '/signup', to: 'users#new'
 
   # Sessions routes

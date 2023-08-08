@@ -1,10 +1,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-/* universal */
+$primary: #337ab7;
 
+/* universal */
 body {
-  padding-top: 60px;
+  padding-top: 10px;
 }
 
 section {
@@ -21,4 +22,43 @@ textarea {
 
 .center h1 {
   margin-bottom: 10px;
+}
+
+/* Navvbar */
+.navbar li a{
+  color: white !important;
+}
+
+a:hover{
+  text-decoration: none;
+}
+
+button{
+  border: none;
+  background-color: $primary;
+}
+
+button:hover{
+  background-color: #03a89f;
+}
+
+.navbar li{
+  list-style-type: none;
+  padding-left: 5px;
+  padding-right: 10px;
+}
+
+.navbar-brand a{
+  color: white !important;
+}
+
+/* forms */
+input, textarea, select, .uneditable-input  {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+input {
+  height: auto !important;
 }
